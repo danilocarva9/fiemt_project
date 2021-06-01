@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pedidos');
+// Route::get('/', function () {
+//     return view('pedidos');
+// });
+
+
+// Route::group(['prefix' => ''], function () {
+// 	Route::resource('', [PedidoController::class, 'index']);
+//     Route::get('pedido/{id}', [PedidoController::class, 'show']);
+// });
+
+
+Route::prefix('')->group(function () {
+    Route::get('/', [PedidoController::class, 'index']);
+    Route::get('/novo-pedido', [PedidoController::class, 'create']);
+    Route::post('/cadastrar-pedido', [PedidoController::class, 'store']);
 });
+
+
