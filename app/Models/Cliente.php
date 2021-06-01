@@ -12,7 +12,7 @@ class Cliente extends Model
     protected $table = 'clientes';
 
     protected $fillable = [
-    	'nome', 'cpf', 'email'   	
+    	'nome', 'nascimento', 'cpf', 'email'   	
     ];
 
     public function pedidos(){

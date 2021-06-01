@@ -61,7 +61,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('/clientes*') }}">
+            <a class="nav-link {{ Request::is('clientes*') ? 'active' : '' }}" href="{{ url('/clientes') }}">
               Clientes
             </a>
           </li>
