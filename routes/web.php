@@ -15,21 +15,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('pedidos');
-// });
+Route::get('/', [PedidoController::class, 'index']);
 
-
-// Route::group(['prefix' => ''], function () {
-// 	Route::resource('', [PedidoController::class, 'index']);
-//     Route::get('pedido/{id}', [PedidoController::class, 'show']);
-// });
-
-
-Route::prefix('')->group(function () {
-    Route::get('/', [PedidoController::class, 'index']);
-    Route::get('/novo-pedido', [PedidoController::class, 'create']);
-    Route::post('/cadastrar-pedido', [PedidoController::class, 'store']);
+Route::prefix('pedidos')->group(function () {
+    Route::get('/novo', [PedidoController::class, 'create']);
+    Route::post('/cadastrar', [PedidoController::class, 'store']);
+    Route::get('/editar/{id}', [PedidoController::class, 'edit']);
+    Route::post('/atualizar/{id}', [PedidoController::class, 'update']);
+    Route::delete('/excluir/{id}', [PedidoController::class, 'destroy']);
 });
+
+
+Route::prefix('produtos')->group(function () {
+    Route::get('/', [ProdutoController::class, 'index']);
+    Route::get('/novo', [ProdutoController::class, 'create']);
+    Route::post('/cadastrar', [ProdutoController::class, 'store']);
+    Route::get('/editar/{id}', [ProdutoController::class, 'edit']);
+    Route::post('/atualizar/{id}', [ProdutoController::class, 'update']);
+    Route::delete('/excluir/{id}', [ProdutoController::class, 'destroy']);
+});
+
 
 

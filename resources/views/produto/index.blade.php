@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-<h1>Pedidos</h1>
+<h1>Produtos</h1>
 <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group mr-2">
     <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -16,7 +16,7 @@
 </div>
 
 <div class="mt-2 mb-3">
-<a class="btn btn-success btn-lg" href="{{ url('pedidos/novo') }}">Novo Pedido</a>
+<a class="btn btn-success btn-lg" href="{{ url('produtos/novo') }}">Novo Produto</a>
 </div>
 
 
@@ -32,26 +32,23 @@
 <thead>
 <tr>
 <th>#</th>
-<th>Cliente</th>
-<th>Produto</th>
-<th>Qtd.</th>
-<th>Valor Unitário</th>
-<th>Valor Total</th>
+<th>Nome</th>
+<th>Categoria</th>
+<th>Descrição</th>
 <th>Opções</th>
 </tr>
 </thead>
 <tbody>
-@foreach($pedidos as $p)
+@foreach($produtos as $p)
     <tr>
     <td>{{ $p->id }}</td>
-    <td>{{ $p->cliente->nome }}</td>
-    <td>{{ $p->produto->nome }}</td>
-    <td>{{ $p->quantidade }}</td>
-    <td>{{ $p->valor_unitario }}</td>
-    <td>{{ $p->valor_total }}</td>
+    <td>{{ $p->nome }}</td>
+    <td>{{ $p->categoria }}</td>
+    <td>{{ $p->descricao }}</td>
     <td>
-    <a href="{{ url('pedidos/editar', $p->id) }}" class="btn btn-sm btn-primary"> editar </a>
-    <form method="POST" action="{{ url('pedidos/excluir', $p->id) }}">
+
+    <a href="{{ url('produtos/editar', $p->id) }}" class="btn btn-sm btn-primary"> editar </a>
+    <form method="POST" action="{{ url('produtos/excluir', $p->id) }}">
         @csrf @method('delete')
         <button type="submit" class="btn btn-sm btn-danger">Deletar</button>
     </form>

@@ -11,6 +11,10 @@ class Pedido extends Model
 
     protected $table = 'pedidos';
 
+    protected $fillable = [
+    	'cliente_id', 'produto_id', 'quantidade', 'valor_unitario', 'valor_total'  	
+    ];
+
     public function cliente(){
         return $this->belongsTo(Cliente::class);
     }
