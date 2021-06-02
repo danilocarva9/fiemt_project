@@ -35,6 +35,7 @@
 <th>Nome</th>
 <th>Categoria</th>
 <th>Descrição</th>
+<th>Valor Unitário</th>
 <th>Opções</th>
 </tr>
 </thead>
@@ -44,7 +45,8 @@
     <td>{{ $p->id }}</td>
     <td>{{ $p->nome }}</td>
     <td>{{ $p->categoria }}</td>
-    <td>{{ $p->descricao }}</td>
+    <td> {{ \Illuminate\Support\Str::limit($p->descricao, 80, '...') }}</td>
+    <td>{{ $p->valor_unitario }}</td>
     <td>
 
     <a href="{{ url('produtos/editar', $p->id) }}" class="btn btn-sm btn-primary"> editar </a>

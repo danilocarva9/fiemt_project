@@ -48,6 +48,17 @@
     </div>
 
 
+    <div class="form-group">
+      <label for="exampleInputPassword1">Valor Unitário</label>
+      <input type="text" class="form-control money" id="valor_unitario" name="valor_unitario" value="{{old('valor_unitario')}}">
+      @if ($errors->has('valor_unitario'))
+      <span class="help-block">
+      <small class="form-text text-danger">Por favor informe o valor unitário do produto.</small>
+      </span>
+      @endif
+    </div>
+
+
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

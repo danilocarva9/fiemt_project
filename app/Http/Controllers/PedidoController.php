@@ -43,8 +43,8 @@ class PedidoController extends Controller
             'cliente' => 'required|int|min:1',
             'produto' => 'required|int|min:1',
             'quantidade' => 'required|int|min:1',
-            'valor_unitario' => 'required|int',
-            'valor_total' => 'required|int',
+            'valor_unitario' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'valor_total' => 'required|regex:/^\d+(\.\d{1,2})?$/'
         ]);
 
         $pedido = new Pedido;
@@ -96,7 +96,7 @@ class PedidoController extends Controller
             'produto' => 'required|int|min:1',
             'quantidade' => 'required|int|min:1',
             'valor_unitario' => 'required|regex:/^\d+(\.\d{1,2})?$/',
-            'valor_total' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'valor_total' => 'required|regex:/^\d+(\.\d{1,2})?$/'
         ]);
 
         $pedido = Pedido::FindOrFail($id);

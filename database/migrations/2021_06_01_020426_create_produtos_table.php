@@ -18,6 +18,7 @@ class CreateProdutosTable extends Migration
             $table->string('nome');
             $table->string('categoria');
             $table->text('descricao');
+            $table->decimal('valor_unitario', 15, 2);
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
+use App\Http\Requests\StoreUpdateProdutoRequest;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -39,13 +40,15 @@ class ProdutoController extends Controller
         request()->validate([
             'nome' => 'required|string|min:1',
             'categoria' => 'required|string|min:1',
-            'descricao' => 'required|string|min:1'
+            'descricao' => 'required|string|min:1',
+            'valor_unitario' => 'required|regex:/^\d+(\.\d{1,2})?$/'
         ]);
 
         $produto = new Produto;
         $produto->nome = $request->nome;
         $produto->categoria = $request->categoria;
         $produto->descricao = $request->descricao;
+        $produto->valor_unitario = $request->valor_unitario;
         $produto->save();
 
         return redirect('/produtos')->with('status', 'Produto cadastro com sucesso.');
@@ -81,18 +84,30 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update($id, StoreUpdateProdutoRequest $request)
     {   
-        request()->validate([
-            'nome' => 'required|string|min:1',
-            'categoria' => 'required|string|min:1',
-            'descricao' => 'required|string|min:1'
-        ]);
+
+    
+
+        //works
+        // $input = $request->all();
+        // $input['valor_unitario'] = preg_replace('/[.]/', '', $input['valor_unitario']);       
+        // $input['valor_unitario'] = str_replace(',','.', $input['valor_unitario']);
+        // $request->replace($input);
+  
+        //temporary
+        // request()->validate([
+        //     'nome' => 'required|string|min:1',
+        //     'categoria' => 'required|string|min:1',
+        //     'descricao' => 'required|string|min:1',
+        //     'valor_unitario' => 'required|regex:/^\d+(\.\d{1,2})?$/'
+        // ]);
 
         $produto = Produto::FindOrFail($id);
         $produto->nome = $request->nome;
         $produto->categoria = $request->categoria;
         $produto->descricao = $request->descricao;
+        $produto->valor_unitario = $request->valor_unitario;
         $produto->update();
 
         return redirect('/produtos')->with('status', 'Produto salvo com sucesso.');

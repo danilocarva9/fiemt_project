@@ -25,7 +25,7 @@
             <option value="{{ $c->id }}" @if (old('cliente') == $c->id) selected="selected" @endif>{{ $c->nome }}</option>
         @endforeach
     </select>
-    @if ($errors->has('cliente'))
+      @if ($errors->has('cliente'))
       <span class="help-block">
       <small class="form-text text-danger">Por favor informe o nome do cliente.</small>
       </span>
@@ -34,10 +34,10 @@
 
     <div class="form-group">
     <label for="exampleInputPassword1">Produto</label>
-    <select name="produto" class="form-control" id="exampleFormControlSelect2">
+    <select id="produto" name="produto" class="form-control" id="exampleFormControlSelect2">
         <option value="" selected disabled>Selecione um Produto</option>
         @foreach($data['produtos'] as $p)
-            <option value="{{ $p->id }}" @if (old('produto') == $p->id) selected="selected" @endif> {{ $p->nome }}</option>
+            <option value="{{ $p->id }}" @if (old('produto') == $p->id) selected="selected" @endif data-value="{{ $p->valor_unitario }}"> {{ $p->nome }}</option>
         @endforeach
     </select>
       @if ($errors->has('produto'))
@@ -49,7 +49,7 @@
 
     <div class="form-group">
     <label for="quantidade">Qtd. Produto</label>
-    <input type="number" class="form-control" name="quantidade" value="{{old('quantidade')}}">
+    <input type="number" class="form-control" id="quantidade" name="quantidade" value="{{old('quantidade')}}">
     @if ($errors->has('quantidade'))
      <span class="help-block">
      <small class="form-text text-danger">Por favor informe a quantidade do produto.</small>
@@ -59,7 +59,7 @@
 
     <div class="form-group">
       <label for="exampleInputPassword1">Valor Unitário</label>
-      <input type="number" class="form-control" id="valor_unitario" name="valor_unitario" value="{{old('valor_unitario')}}">
+      <input type="text" class="form-control money" id="valor_unitario" name="valor_unitario" value="{{old('valor_unitario')}}">
       @if ($errors->has('valor_unitario'))
       <span class="help-block">
       <small class="form-text text-danger">Por favor informe o valor unitário do produto.</small>
@@ -69,7 +69,7 @@
 
     <div class="form-group">
       <label for="exampleInputPassword1">Valor Total</label>
-      <input type="number" class="form-control" id="valor_total" name="valor_total" value="{{old('valor_total')}}">
+      <input type="text" class="form-control money" id="valor_total" name="valor_total" value="{{old('valor_total')}}">
       @if ($errors->has('valor_total'))
       <span class="help-block">
       <small class="form-text text-danger">Por favor informe o valor total do produto.</small>
