@@ -5,81 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Danilo Carvalho">
-  
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  
   </head>
   <body>
-    
 
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">MeusPedidos</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Sair</a>
-    </li>
-  </ul>
-</nav>
-
+@include('_shared.header')
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="sidebar-sticky pt-3">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('pedidos*') || Request::is('/*') ? 'active' : '' }}" href="{{ url('/') }}">
-              <span data-feather="home"></span>
-              Pedidos (33) <span class="sr-only">(current)</span>
-            </a>
-          </li>
-   
-        </ul>
-
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>CADASTRO BÁSICOS</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-
-       <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('produtos*') ? 'active' : '' }}" href="{{ url('/produtos') }}">
-              Produtos
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('clientes*') ? 'active' : '' }}" href="{{ url('/clientes') }}">
-              Clientes
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-    </nav>
-
+      @include('_shared.nav')
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-
-  
-    
       @yield('content')
-
     </main>
   </div>
 </div>
-
-
 </body>
 </html>

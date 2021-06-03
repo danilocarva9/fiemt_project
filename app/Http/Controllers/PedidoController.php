@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Pedido;
 use App\Models\Cliente;
 use App\Models\Produto;
+use App\Services\PedidoService;
 use App\Http\Requests\StoreUpdatePedidoRequest;
-use Illuminate\Http\Request;
+
 
 class PedidoController extends Controller
 {
@@ -40,14 +41,8 @@ class PedidoController extends Controller
      */
     public function store(StoreUpdatePedidoRequest $request)
     {   
-        $pedido = new Pedido;
-        $pedido->cliente_id = $request->cliente;
-        $pedido->produto_id = $request->produto;
-        $pedido->quantidade = $request->quantidade;
-        $pedido->valor_unitario = $request->valor_unitario;
-        $pedido->valor_total = $request->valor_total;
-        $pedido->save();
-        return redirect('/')->with('status', 'Pedido cadastro com sucesso.');
+        $status = (new PedidoService())->save((object)$request->all());
+        return redirect('/')->with($status);
     }
 
     /**
@@ -83,14 +78,8 @@ class PedidoController extends Controller
      */
     public function update($id, StoreUpdatePedidoRequest $request)
     {   
-        $pedido = Pedido::FindOrFail($id);
-        $pedido->cliente_id = $request->cliente;
-        $pedido->produto_id = $request->produto;
-        $pedido->quantidade = $request->quantidade;
-        $pedido->valor_unitario = $request->valor_unitario;
-        $pedido->valor_total = $request->valor_total;
-        $pedido->update();
-        return redirect('/')->with('status', 'Pedido salvo com sucesso.');
+        $status = (new PedidoService())->update($id, (object)$request->all());
+        return redirect('/')->with($status);
     }
 
     /**

@@ -17,7 +17,7 @@ $("#produto").change(function(){
 //Quantidade
 $("#quantidade").keyup(function(){
     //Checa se tem valor, só calcula se tiver produto selecionado
-    var valor_total = !$("#produto").val() ? null : calcularValorTotalPedido();
+    var valor_total = !$("#produto").val() || !$("#quantidade").val() ? null : calcularValorTotalPedido();
     $("#valor_total").val(valor_total);
 });
 
@@ -31,9 +31,10 @@ function calcularValorTotalPedido(){
 
 function formataParaReal(valor){
     var v = valor+'';
-    v = v.replace(/([0-9]{2})$/g, ",$1");
-    if( v.length > 6 )
-            v = v.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+    v = v.replace(/\D/g, "");
+    v = v.replace(/(\d{1,2})$/, ",$1");  
+    v = v.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");  
+    v = v != ""? v:"";
     return v;
 }
 

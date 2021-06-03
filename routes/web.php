@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PedidoController::class, 'index']);
+Route::get('/', [IndexController::class, 'index']);
 
 Route::prefix('pedidos')->group(function () {
     Route::get('/novo', [PedidoController::class, 'create']);
