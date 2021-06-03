@@ -29,7 +29,7 @@
 
     <div class="form-group">
     <label for="nascimento">Nascimento do Cliente</label>
-    <input type="date" class="form-control" name="nascimento" value="{{old('nascimento')}}">
+    <input type="text" class="form-control date" name="nascimento" value="{{old('nascimento')}}">
     @if ($errors->has('nascimento'))
      <span class="help-block">
      <small class="form-text text-danger">{{ $errors->first('nascimento') }}</small>
@@ -39,7 +39,7 @@
 
     <div class="form-group">
     <label for="cpf">CPF do Cliente</label>
-    <input type="text" class="form-control" name="cpf" value="{{old('cpf')}}">
+    <input type="text" class="form-control cpf" name="cpf" value="{{old('cpf')}}">
     @if ($errors->has('cpf'))
      <span class="help-block">
      <small class="form-text text-danger">{{ $errors->first('cpf') }}</small>

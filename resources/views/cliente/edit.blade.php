@@ -29,17 +29,18 @@
 
     <div class="form-group">
     <label for="nascimento">Nascimento do Cliente</label>
-    <input type="date" class="form-control" name="nascimento" value="{{old('nascimento', $cliente->nascimento)}}">
+    <input type="text" class="form-control date" id="nascimento" name="nascimento" value="{{old('nascimento', date('d/m/Y' , strtotime($cliente->nascimento))) }}">
     @if ($errors->has('nascimento'))
      <span class="help-block">
      <small class="form-text text-danger">{{ $errors->first('nascimento') }}</small>
      </span>
     @endif
+
     </div>
 
     <div class="form-group">
     <label for="cpf">CPF do Cliente</label>
-    <input type="text" class="form-control" name="cpf" value="{{old('cpf', $cliente->cpf)}}">
+    <input type="text" class="form-control cpf" name="cpf" value="{{old('cpf', $cliente->cpf)}}">
     @if ($errors->has('cpf'))
      <span class="help-block">
      <small class="form-text text-danger">Por favor informe o cpf do cliente.</small>

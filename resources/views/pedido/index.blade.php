@@ -47,8 +47,8 @@
     <td>{{ $p->cliente->nome }}</td>
     <td>{{ $p->produto->nome }}</td>
     <td>{{ $p->quantidade }}</td>
-    <td>{{ $p->valor_unitario }}</td>
-    <td>{{ $p->valor_total }}</td>
+    <td>{{  'R$ '.number_format($p->valor_unitario, 2, ',', '.') }}</td>
+    <td>{{  'R$ '.number_format($p->valor_total, 2, ',', '.') }}</td>
     <td>
     <a href="{{ url('pedidos/editar', $p->id) }}" class="btn btn-sm btn-primary"> editar </a>
     <form method="POST" action="{{ url('pedidos/excluir', $p->id) }}">

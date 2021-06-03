@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUpdateProdutoRequest extends FormRequest
+class StoreUpdatePedidoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,11 @@ class StoreUpdateProdutoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|string|min:1',
-            'categoria' => 'required|string|min:1',
-            'descricao' => 'required|string|min:1',
-            'valor_unitario' => 'required|regex:/^\d+(\.\d{1,2})?$/'
+            'cliente' => 'required|int|min:1',
+            'produto' => 'required|int|min:1',
+            'quantidade' => 'required|int|min:1',
+            'valor_unitario' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'valor_total' => 'required|regex:/^\d+(\.\d{1,2})?$/'
         ];
     }
 
@@ -36,10 +37,11 @@ class StoreUpdateProdutoRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'nome' => $this->nome,
-            'categoria' => $this->categoria,
-            'descricao' => $this->descricao,
-            'valor_unitario' => convertMoneyToDatabase($this->valor_unitario)
+            'cliente' => $this->cliente,
+            'produto' => $this->produto,
+            'quantidade' => $this->quantidade,
+            'valor_unitario' => convertMoneyToDatabase($this->valor_unitario),
+            'valor_total' => convertMoneyToDatabase($this->valor_total)
         ]);
     }
 }

@@ -35,15 +35,8 @@ class ProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateProdutoRequest $request)
     {
-        request()->validate([
-            'nome' => 'required|string|min:1',
-            'categoria' => 'required|string|min:1',
-            'descricao' => 'required|string|min:1',
-            'valor_unitario' => 'required|regex:/^\d+(\.\d{1,2})?$/'
-        ]);
-
         $produto = new Produto;
         $produto->nome = $request->nome;
         $produto->categoria = $request->categoria;
@@ -60,10 +53,10 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function show(Produto $produto)
-    {
-        //
-    }
+    // public function show(Produto $produto)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -86,23 +79,6 @@ class ProdutoController extends Controller
      */
     public function update($id, StoreUpdateProdutoRequest $request)
     {   
-
-    
-
-        //works
-        // $input = $request->all();
-        // $input['valor_unitario'] = preg_replace('/[.]/', '', $input['valor_unitario']);       
-        // $input['valor_unitario'] = str_replace(',','.', $input['valor_unitario']);
-        // $request->replace($input);
-  
-        //temporary
-        // request()->validate([
-        //     'nome' => 'required|string|min:1',
-        //     'categoria' => 'required|string|min:1',
-        //     'descricao' => 'required|string|min:1',
-        //     'valor_unitario' => 'required|regex:/^\d+(\.\d{1,2})?$/'
-        // ]);
-
         $produto = Produto::FindOrFail($id);
         $produto->nome = $request->nome;
         $produto->categoria = $request->categoria;

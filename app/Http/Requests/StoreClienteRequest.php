@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\ClienteMaiorIdade as RulesClienteMaiorIdade;
 
-class StoreUpdateProdutoRequest extends FormRequest
+class StoreClienteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +24,15 @@ class StoreUpdateProdutoRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
+    {   
         return [
             'nome' => 'required|string|min:1',
-            'categoria' => 'required|string|min:1',
-            'descricao' => 'required|string|min:1',
-            'valor_unitario' => 'required|regex:/^\d+(\.\d{1,2})?$/'
+            'nascimento' => [
+                'required',
+                 new RulesClienteMaiorIdade($this->nascimento),
+            ],
+            'cpf' => 'required|string|unique:clientes|min:1',
+            'email' => 'required|string|email|unique:clientes|min:1'
         ];
     }
 
@@ -37,9 +41,9 @@ class StoreUpdateProdutoRequest extends FormRequest
     {
         $this->merge([
             'nome' => $this->nome,
-            'categoria' => $this->categoria,
-            'descricao' => $this->descricao,
-            'valor_unitario' => convertMoneyToDatabase($this->valor_unitario)
+            'nascimento' => convertDateToDatabase($this->nascimento),
+            'cpf' => returnOnlyNumbers($this->cpf),
+            'email' => $this->email,
         ]);
     }
 }

@@ -1,15 +1,10 @@
 require('./bootstrap');
 require('./jquery.mask');
 
-
 //Masks dos campos
 $('.money').mask('000.000.000.000.000,00', {reverse: true});
-
-//Unmask campos no form submit
-// $("#form").submit(function() {
-//     $(".money").unmask();
-// });
-
+$(".date").mask("99/99/9999", {clearIfNotMatch: true, reverse: true});
+$('.cpf').mask('000.000.000-00', {clearIfNotMatch: true, reverse: true});
 
 //Calcular valor total do Pedido
 $("#produto").change(function(){
@@ -19,7 +14,7 @@ $("#produto").change(function(){
     var valor_total = calcularValorTotalPedido();
     $("#valor_total").val(valor_total);
 });
-
+//Quantidade
 $("#quantidade").keyup(function(){
     //Checa se tem valor, só calcula se tiver produto selecionado
     var valor_total = !$("#produto").val() ? null : calcularValorTotalPedido();
@@ -29,9 +24,19 @@ $("#quantidade").keyup(function(){
 function calcularValorTotalPedido(){
     var valor_unitario = $("#produto").find(':selected').attr("data-value");
     var quantidade = $("#quantidade").val();
-    $("#valor_unitario").val(valor_unitario);
-    var valor_total = parseInt(quantidade * valor_unitario);
-    console.log(valor_total);
-    return valor_total;
+    $("#valor_unitario").val(formataParaReal(limpaFormatacao(valor_unitario)));
+    var valor_total = (limpaFormatacao(quantidade) * limpaFormatacao(valor_unitario));
+    return formataParaReal(valor_total);
 }
 
+function formataParaReal(valor){
+    var v = valor+'';
+    v = v.replace(/([0-9]{2})$/g, ",$1");
+    if( v.length > 6 )
+            v = v.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+    return v;
+}
+
+function limpaFormatacao(value){
+    return parseInt(value.replace(/[\D]+/g,''));
+}

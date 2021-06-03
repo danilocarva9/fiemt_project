@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pedido;
 use App\Models\Cliente;
 use App\Models\Produto;
+use App\Http\Requests\StoreUpdatePedidoRequest;
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller
@@ -37,16 +38,8 @@ class PedidoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdatePedidoRequest $request)
     {   
-        request()->validate([
-            'cliente' => 'required|int|min:1',
-            'produto' => 'required|int|min:1',
-            'quantidade' => 'required|int|min:1',
-            'valor_unitario' => 'required|regex:/^\d+(\.\d{1,2})?$/',
-            'valor_total' => 'required|regex:/^\d+(\.\d{1,2})?$/'
-        ]);
-
         $pedido = new Pedido;
         $pedido->cliente_id = $request->cliente;
         $pedido->produto_id = $request->produto;
@@ -54,7 +47,6 @@ class PedidoController extends Controller
         $pedido->valor_unitario = $request->valor_unitario;
         $pedido->valor_total = $request->valor_total;
         $pedido->save();
-
         return redirect('/')->with('status', 'Pedido cadastro com sucesso.');
     }
 
@@ -64,10 +56,10 @@ class PedidoController extends Controller
      * @param  \App\Models\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function show(Pedido $pedido)
-    {
-        //
-    }
+    // public function show(Pedido $pedido)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -89,16 +81,8 @@ class PedidoController extends Controller
      * @param  \App\Models\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update($id, StoreUpdatePedidoRequest $request)
     {   
-        request()->validate([
-            'cliente' => 'required|int|min:1',
-            'produto' => 'required|int|min:1',
-            'quantidade' => 'required|int|min:1',
-            'valor_unitario' => 'required|regex:/^\d+(\.\d{1,2})?$/',
-            'valor_total' => 'required|regex:/^\d+(\.\d{1,2})?$/'
-        ]);
-
         $pedido = Pedido::FindOrFail($id);
         $pedido->cliente_id = $request->cliente;
         $pedido->produto_id = $request->produto;
@@ -106,7 +90,6 @@ class PedidoController extends Controller
         $pedido->valor_unitario = $request->valor_unitario;
         $pedido->valor_total = $request->valor_total;
         $pedido->update();
-
         return redirect('/')->with('status', 'Pedido salvo com sucesso.');
     }
 

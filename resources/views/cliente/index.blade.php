@@ -43,8 +43,8 @@
     <tr>
     <td>{{ $c->id }}</td>
     <td>{{ $c->nome }}</td>
-    <td>{{ $c->nascimento }}</td>
-    <td>{{ $c->cpf }}</td>
+    <td>{{ date('d/m/Y' , strtotime($c->nascimento)) }}</td>
+    <td>{{ $c->cpf }} </td>
     <td>{{ $c->email }}</td>
     <td>
 

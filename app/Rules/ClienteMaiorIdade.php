@@ -24,8 +24,8 @@ class ClienteMaiorIdade implements Rule
      * @return bool
      */
     public function passes($attribute, $value)
-    {
-        $data = strtotime($value);
+    {   
+        $data = strtotime(convertDateToDatabase($value));
         $data_m = strtotime('+18 years', $data);
         //Checa se data atual é menor que data +18 anos.
         return time() < $data_m ? false : true;

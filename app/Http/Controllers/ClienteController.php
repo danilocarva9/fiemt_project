@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use App\Rules\ClienteMaiorIdade as RulesClienteMaiorIdade;
+use App\Http\Requests\StoreClienteRequest;
+use App\Http\Requests\UpdateClienteRequest;
+
 
 class ClienteController extends Controller
 {
@@ -36,18 +36,8 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClienteRequest $request)
     {
-        request()->validate([
-            'nome' => 'required|string|min:1',
-            'nascimento' => [
-                'required',
-                 new RulesClienteMaiorIdade($request),
-            ],
-            'cpf' => 'required|string|unique:clientes|min:1',
-            'email' => 'required|string|email|unique:clientes|min:1'
-        ]);
-
         $cliente = new Cliente;
         $cliente->nome = $request->nome;
         $cliente->nascimento = $request->nascimento;
@@ -64,10 +54,10 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function show(Cliente $cliente)
-    {
-        //
-    }
+    // public function show(Cliente $cliente)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -88,29 +78,8 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request, Cliente $cliente)
+    public function update($id, UpdateClienteRequest $request)
     {
-        request()->validate([
-            'nome' => 'required|string|min:1',
-            'nascimento' => [
-                'required',
-                 new RulesClienteMaiorIdade($request),
-            ],
-            'cpf' => [
-                'required',
-                'string',
-                Rule::unique('clientes')->ignore($id),
-                'min:1'
-            ],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                Rule::unique('clientes')->ignore($id),
-                'min:1'
-            ]
-        ]);
-
         $cliente = Cliente::FindOrFail($id);
         $cliente->nome = $request->nome;
         $cliente->nascimento = $request->nascimento;
