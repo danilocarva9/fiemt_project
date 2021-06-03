@@ -75,7 +75,3 @@ php -S 127.0.0.1:8000 -t public/
 
 # =) Pronto xD
 A aplicação deverá rodar e é possível mexer nas funcionalidades criadas.
-
-Para acessar essa aplicação rodando online, favor acessar o endereço abaixo:
-
-[dscarvalho.com](https://dscarvalho.com/projetos/fiemt_project)
