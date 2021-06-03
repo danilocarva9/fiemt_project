@@ -13,14 +13,29 @@
 
 1. Fazer o clone do projeto (git clone https://github.com/danilocarva9/fiemt_project.git).
 
-2. Verificar as extensões do PHP necessárias, se estão instaladas e habilitadas para o projeto Laravel. (openssl, php-bcmath, php-common, php-curl, php-json, php-mbstring, php-mysql, php-xml, php-zip).
+2. Verificar as extensões do PHP necessárias, se estão instaladas e habilitadas para o projeto Laravel. (openssl, php-common, php-curl, php-json, php-mbstring, php-mysql, php-xml, php-zip).
 > assss
 
 3. Edite o arquivo na pasta raiz do projeto, chamado **.env.example** (arquivo de configuração de variáveis), é preciso renomear o arquivo para **.env** (para ser um arquivo válido).
 
-4. Inicie (se já não iniciado) o servidor de  Banco de Dados MYSQL, e crie uma database chamada **meus_pedidos**
 
-5. Configurar o arquivo **.env**, nele é preciso definir as variáveis abaixo com as configurações do banco de dados MYSQL que irá acessar:
+4. Abrir o Terminal/CMD, entrar na pasta do projeto clonado e rodar o comando abaixo: 
+
+```bash
+composer install
+```
+ > (O comando acima irá instalar todas as dependências do projeto, caso haja algum erro, deverá verificar se o PHP está com as extensões listadas acima, instaladas e ativas.)
+
+
+5. Após editar o arquivo **.env**, rodar o comando abaixo para gerar a key para aplicação (irá gerar uma chave base64 no arquivo .env (APP_KEY):
+```bash
+php artisan key:generate
+```
+
+6. Inicie (se já não iniciado) o servidor de  Banco de Dados MYSQL, e crie uma database chamada **meus_pedidos**
+
+
+7. Configure o arquivo **.env**, nele é preciso definir as variáveis abaixo com as configurações do banco de dados MYSQL que irá acessar:
 
 ```bash
 DB_CONNECTION=mysql
@@ -32,20 +47,8 @@ DB_PASSWORD=                  -- senha do banco de dados.
 ```
 > Definir as variáveis de acordo com as informações de acesso do seu banco local.
 
-6. Após editar o arquivo **.env**, rodar o comando abaixo para gerar a key para aplicação (irá gerar uma chave base64 no arquivo .env (APP_KEY):
-```bash
-php artisan key:generate
-```
 
-7. Abrir o Terminal/CMD, entrar na pasta do projeto clonado e rodar o comando abaixo: 
-
-```bash
-composer install
-```
- > (O comando acima irá instalar todas as dependências do projeto, caso haja algum erro, deverá verificar se o PHP está com as extensões listadas acima, instaladas e ativas.)
-
-
-8. Agora é preciso rodar o comando para fazer as migrations do banco de dados. (migration é uma forma de criar toda estrutura do banco de dados tabelas etc. No terminal/CMD dentro da pasta da aplicação, rode o seguinte comando:
+8. Agora depois de configurado o acesso ao banco de dados, é preciso rodar o comando para fazer as migrations do banco de dados. (migration é uma forma de criar toda estrutura do banco de dados tabelas etc. No terminal/CMD dentro da pasta da aplicação, rode o seguinte comando:
 
 ```bash
 php artisan migrate
