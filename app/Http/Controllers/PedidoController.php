@@ -92,6 +92,9 @@ class PedidoController extends Controller
     {
         $pedido = Pedido::FindOrFail($id);
         $pedido->delete();
-        return redirect('/')->with('status', 'Pedido excluído com sucesso.');
+
+        $status = ['status' => 'success', 'message' => 'Pedido excluído com sucesso.'];
+        return redirect('/')->with($status);
+        
     }
 }

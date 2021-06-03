@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use App\Models\Pedido;
+use App\Models\Produto;
+use App\Models\Cliente;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+
+        $pedidos = Pedido::all();
+        $produtos = Produto::all();
+        $clientes = Cliente::all();
+        View::share(['pedidos' => $pedidos, 'produtos' => $produtos, 'clientes' => $clientes]);
     }
 }

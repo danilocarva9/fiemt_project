@@ -4,7 +4,7 @@
         <li class="nav-item">
         <a class="nav-link {{ Request::is('pedidos*') || Request::is('/*') ? 'active' : '' }}" href="{{ url('/') }}">
             <span data-feather="home"></span>
-            Pedidos (33) <span class="sr-only">(current)</span>
+            Pedidos ({{ count($pedidos) }}) <span class="sr-only">(current)</span>
         </a>
         </li>
 
@@ -20,13 +20,13 @@
     <ul class="nav flex-column mb-2">
         <li class="nav-item">
         <a class="nav-link {{ Request::is('produtos*') ? 'active' : '' }}" href="{{ url('/produtos') }}">
-            Produtos
+            Produtos ({{ count($produtos) }})
         </a>
         </li>
 
         <li class="nav-item">
         <a class="nav-link {{ Request::is('clientes*') ? 'active' : '' }}" href="{{ url('/clientes') }}">
-            Clientes
+            Clientes ({{ count($clientes) }})
         </a>
         </li>
         

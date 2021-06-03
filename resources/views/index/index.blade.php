@@ -5,12 +5,12 @@
 <h1>Pedidos</h1>
 <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group mr-2">
-    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+    <button type="button" class="btn btn-sm disabled btn-outline-secondary">Compartilhar</button>
+    <button type="button" class="btn btn-sm disabled btn-outline-secondary">Exportar</button>
     </div>
-    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+    <button type="button" class="btn btn-sm disabled btn-outline-secondary dropdown-toggle">
     <span data-feather="calendar"></span>
-    This week
+    Esta semana
     </button>
 </div>
 </div>
@@ -23,7 +23,12 @@
 @if (session('status'))
 <div class="alert alert-{{ session('status') }}" role="alert">
 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<strong>{{ session('message') }}</strong>
+<h5>{{ session('message') }}</h5>
+    @if(session('data'))
+    Pedido de número <b>#{{ session('data.data.id')}}</b>, para o cliente <b>{{ session('data.cliente_nome') }}</b>. 
+    <br/>
+    Valor total: <b>{{  'R$ '.number_format(session('data.data.valor_total'), 2, ',', '.') }}</b>
+    @endif
 </div>
 @endif
 
