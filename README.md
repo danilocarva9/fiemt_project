@@ -17,7 +17,7 @@
 git clone https://github.com/danilocarva9/fiemt_project.git
 ```
 
-2. Verificar as extensões do PHP necessárias, se estão instaladas e habilitadas para o projeto Laravel. (openssl, php-common, php-curl, php-json, php-mbstring, php-mysql, php-xml, php-zip).
+2. Verificar as extensões do PHP necessárias, se estão instaladas e habilitadas para o projeto Laravel. (openssl, php-common, php-bcmath, php-curl, php-json, php-mbstring, php-mysql, php-xml, php-zip).
 > --
 
 3. Edite o arquivo na pasta raiz do projeto, chamado **.env.example** (arquivo de configuração de variáveis), é preciso renomear o arquivo para **.env** (para ser um arquivo válido).
