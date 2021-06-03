@@ -9,7 +9,7 @@
 
 ## Instalação
 
-1. Fazer o clone do projeto (git clone http://url...).
+1. Fazer o clone do projeto (git clone https://github.com/danilocarva9/fiemt_project.git).
 2. Entrar na pasta do projeto clonado e rodar o comando: 
 
 ```bash
@@ -27,7 +27,7 @@ php artisan key:generate
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1             -- aqui vai o IP, se for rodar local, deixar o atual.
 DB_PORT=3306                  -- porta do banco de dados.
-DB_DATABASE=laravel           -- nome do banco de dados criado.
+DB_DATABASE=meus_pedidos      -- nome do banco de dados criado.
 DB_USERNAME=root              -- usuário do banco de dados.
 DB_PASSWORD=                  -- senha do banco de dados.
 ```
