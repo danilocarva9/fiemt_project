@@ -23,11 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // if(Schema::hasTable('pedidos')){
-        //     $pedidos = Pedido::all();
-        //     $produtos = Produto::all();
-        //     $clientes = Cliente::all();
-        //     View::share(['pedidos' => $pedidos, 'produtos' => $produtos, 'clientes' => $clientes]);
-        // }
+     //
     }
 }
