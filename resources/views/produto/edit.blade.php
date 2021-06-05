@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app_inside')
 @section('content')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 <h1>Produtos</h1>
 </div>
 
-<form id="form" method="POST" action="{{ url('produtos/atualizar', $produto->id) }}" enctype="multipart/form-data">
+<form id="form" method="POST" action="{{ url('sys/produtos/atualizar', $produto->id) }}" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
     <label for="nome">Nome do Produto</label>
@@ -59,7 +59,7 @@
     </div>
     @endif
 
-  <a href="{{ url('produtos')}}" class="btn btn-primary">Voltar</a>
+  <a href="{{ url('sys/produtos')}}" class="btn btn-primary">Voltar</a>
   <button type="submit" class="btn btn-success">Salvar Produto</button>
 </form>
 

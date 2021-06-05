@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_inside')
 @section('content')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -6,7 +6,7 @@
 </div>
 
 <div class="mt-2 mb-3">
-<a class="btn btn-success btn-lg" href="{{ url('clientes/novo') }}">Novo Cliente</a>
+<a class="btn btn-success btn-lg" href="{{ url('sys/clientes/novo') }}">Novo Cliente</a>
 </div>
 
 @if (session('status'))
@@ -38,8 +38,8 @@
     <td>{{ $c->email }}</td>
     <td>
 
-    <a href="{{ url('clientes/editar', $c->id) }}" class="btn btn-sm btn-primary"> editar </a>
-    <form method="POST" action="{{ url('clientes/excluir', $c->id) }}">
+    <a href="{{ url('sys/clientes/editar', $c->id) }}" class="btn btn-sm btn-primary"> editar </a>
+    <form method="POST" action="{{ url('sys/clientes/excluir', $c->id) }}">
         @csrf @method('delete')
         <button type="submit" class="btn btn-sm btn-danger">Deletar</button>
     </form>

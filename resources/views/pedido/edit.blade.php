@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app_inside')
 @section('content')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 <h1>Pedidos</h1>
 </div>
 
-<form method="POST" action="{{ url('pedidos/atualizar', $pedido->id) }}" enctype="multipart/form-data">
+<form method="POST" action="{{ url('sys/pedidos/atualizar', $pedido->id) }}" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
     <label for="exampleInputEmail1">Cliente</label>
@@ -76,7 +76,7 @@
         </ul>
     </div>
     @endif
-    <a href="{{ url('') }}" class="btn btn-primary">Voltar</a>
+    <a href="{{ url('sys/dashboard') }}" class="btn btn-primary">Voltar</a>
     <button type="submit" class="btn btn-success">Salvar Pedido</button>
 </form>
 

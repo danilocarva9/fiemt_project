@@ -2,7 +2,7 @@
     <div class="sidebar-sticky pt-3">
     <ul class="nav flex-column">
         <li class="nav-item">
-        <a class="nav-link {{ Request::is('pedidos*') || Request::is('/*') ? 'active' : '' }}" href="{{ url('/') }}">
+        <a class="nav-link {{ Request::is('sys/pedidos*') || Request::is('sys/dashboard*') ? 'active' : '' }}" href="{{ url('/sys/dashboard') }}">
             <span data-feather="home"></span>
             Pedidos <span class="sr-only">(current)</span>
         </a>
@@ -19,13 +19,13 @@
 
     <ul class="nav flex-column mb-2">
         <li class="nav-item">
-        <a class="nav-link {{ Request::is('produtos*') ? 'active' : '' }}" href="{{ url('/produtos') }}">
+        <a class="nav-link {{ Request::is('sys/produtos*') ? 'active' : '' }}" href="{{ url('/sys/produtos') }}">
             Produtos 
         </a>
         </li>
 
         <li class="nav-item">
-        <a class="nav-link {{ Request::is('clientes*') ? 'active' : '' }}" href="{{ url('/clientes') }}">
+        <a class="nav-link {{ Request::is('sys/clientes*') ? 'active' : '' }}" href="{{ url('/sys/clientes') }}">
             Clientes 
         </a>
         </li>
