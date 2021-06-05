@@ -59,8 +59,14 @@ php artisan migrate
 ```
 > (Se o banco de dados estiver rodando e com as configurações certas no .env, o migration deve criar as tabelas [clientes, pedidos, produtos e migrations] automaticamente).
 
+9. Agora é preciso rodar as seeds, que são responsáveis por popular nosso banco de dados. (As seeds do projeto irão apenas criar 5 categorias pré estabelecidas), rode o comando abaixo:
+```bash
+php artisan db:seed --class=CategoriaSeeder
+```
+> (Caso não consiga rodar a seeder, as categorias vão ser criadas pelos script de criação do banco na pasta banco-de-dados).
 
-9. Para rodar a aplicação, há duas formas. Estando no Terminal/CMD dentro da pasta, na raiz, rode um dos códigos:
+
+10. Para rodar a aplicação, há duas formas. Estando no Terminal/CMD dentro da pasta, na raiz, rode um dos códigos:
 
 ```bash
 php artisan serve

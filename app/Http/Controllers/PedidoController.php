@@ -42,7 +42,7 @@ class PedidoController extends Controller
     public function store(StoreUpdatePedidoRequest $request)
     {   
         $status = (new PedidoService())->save((object)$request->all());
-        return redirect('/')->with($status);
+        return redirect('sys/dashboard')->with($status);
     }
 
     /**
@@ -79,7 +79,7 @@ class PedidoController extends Controller
     public function update($id, StoreUpdatePedidoRequest $request)
     {   
         $status = (new PedidoService())->update($id, (object)$request->all());
-        return redirect('/')->with($status);
+        return redirect('sys/dashboard')->with($status);
     }
 
     /**
@@ -94,7 +94,7 @@ class PedidoController extends Controller
         $pedido->delete();
 
         $status = ['status' => 'success', 'message' => 'Pedido excluído com sucesso.'];
-        return redirect('/')->with($status);
+        return redirect('sys/dashboard')->with($status);
         
     }
 }

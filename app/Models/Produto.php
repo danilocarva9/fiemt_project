@@ -12,11 +12,15 @@ class Produto extends Model
     protected $table = 'produtos';
 
     protected $fillable = [
-    	'nome', 'categoria', 'descricao', 'valor_unitario'  	
+    	'nome', 'categoria_id', 'descricao', 'valor_unitario'  	
     ];
 
     public function pedidos(){
         return $this->hasMany(Pedido::class);
+    }
+
+    public function categoria(){
+        return $this->belongsTo(Categoria::class);
     }
 
 }

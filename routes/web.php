@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PedidoController;
@@ -39,6 +40,15 @@ Route::group(['prefix' => 'sys', 'middleware' => 'auth'], function () {
     Route::get('produtos/editar/{id}', [ProdutoController::class, 'edit']);
     Route::post('produtos/atualizar/{id}', [ProdutoController::class, 'update']);
     Route::delete('produtos/excluir/{id}', [ProdutoController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'sys', 'middleware' => 'auth'], function () {
+    Route::get('categorias', [CategoriaController::class, 'index']);
+    Route::get('categorias/novo', [CategoriaController::class, 'create']);
+    Route::post('categorias/cadastrar', [CategoriaController::class, 'store']);
+    Route::get('categorias/editar/{id}', [CategoriaController::class, 'edit']);
+    Route::post('categorias/atualizar/{id}', [CategoriaController::class, 'update']);
+    Route::delete('categorias/excluir/{id}', [CategoriaController::class, 'destroy']);
 });
 
 Route::group(['prefix' => 'sys', 'middleware' => 'auth'], function () {

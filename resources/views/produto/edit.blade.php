@@ -17,7 +17,7 @@
     @endif
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
     <label for="categoria">Categoria do Produto</label>
     <input type="text" class="form-control" name="categoria" value="{{old('categoria', $produto->categoria)}}">
     @if ($errors->has('categoria'))
@@ -25,7 +25,27 @@
      <small class="form-text text-danger">Por favor informe a categoria do produto.</small>
      </span>
     @endif
+    </div> -->
+
+
+
+
+
+    <div class="form-group">
+    <label for="exampleInputPassword1">Categoria do Produto</label>
+    <select id="categoria" name="categoria" class="form-control" id="categoria">
+        <option value="" selected disabled>Selecione uma Categoria</option>
+        @foreach($categorias as $c)
+            <option value="{{ $c->id }}" @if (old('categoria') == $c->id or $produto->categoria_id == $c->id) selected="selected" @endif> {{ $c->nome }}</option>
+        @endforeach
+    </select>
+      @if ($errors->has('categoria'))
+      <span class="help-block">
+      <small class="form-text text-danger">Por favor selecione uma categoria.</small>
+      </span>
+      @endif
     </div>
+    
 
     <div class="form-group">
     <label for="descricao">Descrição do Produto</label>

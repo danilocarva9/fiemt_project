@@ -2,13 +2,12 @@
 @section('content')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-<h1>Produtos</h1>
+<h1>Categoria de Produtos</h1>
 </div>
 
 <div class="mt-2 mb-3">
-<a class="btn btn-success btn-lg" href="{{ url('sys/produtos/novo') }}">Novo Produto</a>
+<a class="btn btn-success btn-lg" href="{{ url('sys/categorias/novo') }}">Novo Produto</a>
 </div>
-
 
 @if (session('status'))
 <div class="alert alert-success" role="alert">
@@ -23,24 +22,17 @@
 <tr>
 <th>#</th>
 <th>Nome</th>
-<th>Categoria</th>
-<th>Descrição</th>
-<th>Valor Unitário</th>
 <th>Opções</th>
 </tr>
 </thead>
 <tbody>
-@foreach($produtos as $p)
+@foreach($categorias as $c)
     <tr>
-    <td>{{ $p->id }}</td>
-    <td>{{ $p->nome }}</td>
-    <td>{{ $p->categoria->nome }}</td>
-    <td>{{ \Illuminate\Support\Str::limit($p->descricao, 80, '...') }}</td>
-    <td>{{  'R$ '.number_format($p->valor_unitario, 2, ',', '.') }} </td>
+    <td>{{ $c->id }}</td>
+    <td>{{ $c->nome }}</td>
     <td>
-
-    <a href="{{ url('sys/produtos/editar', $p->id) }}" class="btn btn-sm btn-primary"> editar </a>
-    <form method="POST" action="{{ url('sys/produtos/excluir', $p->id) }}">
+    <a href="{{ url('sys/categorias/editar', $c->id) }}" class="btn btn-sm btn-primary"> editar </a>
+    <form method="POST" action="{{ url('sys/categorias/excluir', $c->id) }}">
         @csrf @method('delete')
         <button type="submit" class="btn btn-sm btn-danger">Deletar</button>
     </form>

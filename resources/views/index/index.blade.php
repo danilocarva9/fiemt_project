@@ -55,8 +55,8 @@
     <td>{{  'R$ '.number_format($p->valor_unitario, 2, ',', '.') }}</td>
     <td>{{  'R$ '.number_format($p->valor_total, 2, ',', '.') }}</td>
     <td>
-    <a href="{{ url('pedidos/editar', $p->id) }}" class="btn btn-sm btn-primary"> editar </a>
-    <form method="POST" action="{{ url('pedidos/excluir', $p->id) }}">
+    <a href="{{ url('sys/pedidos/editar', $p->id) }}" class="btn btn-sm btn-primary"> editar </a>
+    <form method="POST" action="{{ url('sys/pedidos/excluir', $p->id) }}">
         @csrf @method('delete')
         <button type="submit" class="btn btn-sm btn-danger">Deletar</button>
     </form>

@@ -21,5 +21,6 @@ class Pedido extends Model
 
     public function produto(){
         return $this->belongsTo(Produto::class);
+        //$p->produto->nome
     }
 }

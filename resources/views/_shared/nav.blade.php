@@ -18,9 +18,16 @@
     </h6>
 
     <ul class="nav flex-column mb-2">
+
         <li class="nav-item">
         <a class="nav-link {{ Request::is('sys/produtos*') ? 'active' : '' }}" href="{{ url('/sys/produtos') }}">
             Produtos 
+        </a>
+        </li>
+
+        <li class="nav-item">
+        <a class="nav-link {{ Request::is('sys/categorias*') ? 'active' : '' }}" href="{{ url('/sys/categorias') }}">
+            Categorias de Produtos 
         </a>
         </li>
 

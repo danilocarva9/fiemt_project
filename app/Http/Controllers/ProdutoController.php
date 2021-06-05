@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use App\Http\Requests\StoreUpdateProdutoRequest;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -26,7 +27,8 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('produto.create');
+        $data = ['categorias' => Categoria::get()];
+        return view('produto.create', ['data' => $data]);
     }
 
     /**
@@ -39,12 +41,12 @@ class ProdutoController extends Controller
     {
         $produto = new Produto;
         $produto->nome = $request->nome;
-        $produto->categoria = $request->categoria;
+        $produto->categoria_id = $request->categoria;
         $produto->descricao = $request->descricao;
         $produto->valor_unitario = $request->valor_unitario;
         $produto->save();
 
-        return redirect('/produtos')->with('status', 'Produto cadastro com sucesso.');
+        return redirect('sys/produtos')->with('status', 'Produto cadastro com sucesso.');
     }
 
     /**
@@ -67,7 +69,8 @@ class ProdutoController extends Controller
     public function edit($id)
     {
         $produto = Produto::FindOrFail($id);
-        return view('produto.edit', ['produto' => $produto]);
+        $categorias = Categoria::get();
+        return view('produto.edit', ['produto' => $produto, 'categorias' => $categorias]);
     }
 
     /**
@@ -81,12 +84,12 @@ class ProdutoController extends Controller
     {   
         $produto = Produto::FindOrFail($id);
         $produto->nome = $request->nome;
-        $produto->categoria = $request->categoria;
+        $produto->categoria_id = $request->categoria;
         $produto->descricao = $request->descricao;
         $produto->valor_unitario = $request->valor_unitario;
         $produto->update();
 
-        return redirect('/produtos')->with('status', 'Produto salvo com sucesso.');
+        return redirect('sys/produtos')->with('status', 'Produto salvo com sucesso.');
     }
 
     /**
@@ -99,6 +102,6 @@ class ProdutoController extends Controller
     {
         $produto = Produto::FindOrFail($id);
         $produto->delete();
-        return redirect('/produtos')->with('status', 'Produto excluído com sucesso.');
+        return redirect('sys/produtos')->with('status', 'Produto excluído com sucesso.');
     }
 }
