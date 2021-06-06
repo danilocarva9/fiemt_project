@@ -6,7 +6,7 @@
 </div>
 
 <div class="mt-2 mb-3">
-<a class="btn btn-success btn-lg" href="{{ url('sys/produtos/novo') }}">Novo Produto</a>
+<a class="btn btn-success btn-lg text-capitalize" href="{{ url('sys/produtos/novo') }}">{{ __('common.new') }} Produto</a>
 </div>
 
 
@@ -39,10 +39,10 @@
     <td>{{  'R$ '.number_format($p->valor_unitario, 2, ',', '.') }} </td>
     <td>
 
-    <a href="{{ url('sys/produtos/editar', $p->id) }}" class="btn btn-sm btn-primary"> editar </a>
-    <form method="POST" action="{{ url('sys/produtos/excluir', $p->id) }}">
+    <a href="{{ url('sys/produtos/editar', $p->id) }}" class="btn btn-sm btn-primary float-left"> {{ __('common.edit') }} </a>
+    <form method="POST" class="float-left ml-2" action="{{ url('sys/produtos/excluir', $p->id) }}">
         @csrf @method('delete')
-        <button type="submit" class="btn btn-sm btn-danger">Deletar</button>
+        <button type="submit" class="btn btn-sm btn-danger">{{ __('common.delete') }}</button>
     </form>
     </td>
     </tr>

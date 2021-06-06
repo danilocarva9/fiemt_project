@@ -46,7 +46,7 @@ class ProdutoController extends Controller
         $produto->valor_unitario = $request->valor_unitario;
         $produto->save();
 
-        return redirect('sys/produtos')->with('status', 'Produto cadastro com sucesso.');
+        return redirect('sys/produtos')->with('status', __('messages.success_inserted'));
     }
 
     /**
@@ -89,7 +89,7 @@ class ProdutoController extends Controller
         $produto->valor_unitario = $request->valor_unitario;
         $produto->update();
 
-        return redirect('sys/produtos')->with('status', 'Produto salvo com sucesso.');
+        return redirect('sys/produtos')->with('status', __('messages.success_updated'));
     }
 
     /**
@@ -102,6 +102,6 @@ class ProdutoController extends Controller
     {
         $produto = Produto::FindOrFail($id);
         $produto->delete();
-        return redirect('sys/produtos')->with('status', 'Produto excluído com sucesso.');
+        return redirect('sys/produtos')->with('status', __('messages.success_deleted'));
     }
 }

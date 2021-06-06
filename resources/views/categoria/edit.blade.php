@@ -27,8 +27,8 @@
     </div>
     @endif
 
-  <a href="{{ url('sys/categorias')}}" class="btn btn-primary">Voltar</a>
-  <button type="submit" class="btn btn-success">Salvar Categoria</button>
+  <a href="{{ url('sys/categorias')}}" class="btn btn-primary">{{ __('common.back') }}</a>
+  <button type="submit" class="btn btn-success text-capitalize">{{ __('common.save') }} Categoria</button>
 </form>
 
 @endsection

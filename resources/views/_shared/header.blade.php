@@ -12,7 +12,7 @@
     
     <li class="nav-item text-nowrap">
        <a class="nav-link text-white" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
+       {{ __('common.logout') }}
        </a>
       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
           @csrf

@@ -45,7 +45,7 @@ class ClienteController extends Controller
         $cliente->email = $request->email;
         $cliente->save();
 
-        return redirect('sys/clientes')->with('status', 'Cliente cadastro com sucesso.');
+        return redirect('sys/clientes')->with('status', __('messages.success_inserted'));
     }
 
     /**
@@ -86,7 +86,7 @@ class ClienteController extends Controller
         $cliente->cpf = $request->cpf;
         $cliente->email = $request->email;
         $cliente->update();
-        return redirect('sys/clientes')->with('status', 'Cliente salvo com sucesso.');
+        return redirect('sys/clientes')->with('status', __('messages.success_updated'));
     }
 
     /**
@@ -99,6 +99,6 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::FindOrFail($id);
         $cliente->delete();
-        return redirect('sys/clientes')->with('status', 'Cliente excluído com sucesso.');
+        return redirect('sys/clientes')->with('status', __('messages.success_deleted'));
     }
 }

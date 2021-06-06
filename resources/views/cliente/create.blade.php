@@ -59,8 +59,8 @@
     </div>
     @endif
 
-  <a href="{{ url('sys/clientes')}}" class="btn btn-primary">Voltar</a>
-  <button type="submit" class="btn btn-success">Cadastrar Cliente</button>
+  <a href="{{ url('sys/clientes')}}" class="btn btn-primary">{{ __('common.back') }}</a>
+  <button type="submit" class="btn btn-success">{{ __('common.register') }} Cliente</button>
   
 </form>
 

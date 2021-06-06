@@ -22,9 +22,9 @@ class PedidoService {
             $pedido_data['cliente_nome'] = $pedido->cliente->nome; 
             
         }catch(\Exception $e){
-            return $status = ['status' => 'danger', 'message' => 'Ocorreu um erro ao cadastrar o pedido.'];
+            return $status = ['status' => 'danger', 'message' => __('messages.error_inserted')];
         }
-        return $status = ['status' => 'success', 'message' => 'Pedido cadastro com sucesso.', 'data' => $pedido_data];
+        return $status = ['status' => 'success', 'message' => __('messages.success_inserted'), 'data' => $pedido_data];
     }
 
 
@@ -41,9 +41,9 @@ class PedidoService {
             $pedido->update();
 
         }catch(\Exception $e){
-            return $status = ['status' => 'danger', 'message' => 'Ocorreu um erro ao atualizar o pedido.'];
+            return $status = ['status' => 'danger', 'message' => __('messages.error_updated')];
         }
-        return $status = ['status' => 'success', 'message' => 'Pedido atualizado com sucesso.'];
+        return $status = ['status' => 'success', 'message' => __('messages.success_updated')];
     }
 
 }

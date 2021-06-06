@@ -79,8 +79,8 @@
     </div>
     @endif
 
-  <a href="{{ url('sys/produtos')}}" class="btn btn-primary">Voltar</a>
-  <button type="submit" class="btn btn-success">Salvar Produto</button>
+  <a href="{{ url('sys/produtos')}}" class="btn btn-primary">{{ __('common.back') }}</a>
+  <button type="submit" class="btn btn-success text-capitalize">{{ __('common.save') }} Produto</button>
 </form>
 
 @endsection

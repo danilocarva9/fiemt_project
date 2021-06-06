@@ -16,17 +16,16 @@
 </div>
 
 <div class="mt-2 mb-3">
-<a class="btn btn-success btn-lg" href="{{ url('sys/pedidos/novo') }}">Novo Pedido</a>
+<a class="btn btn-success btn-lg text-capitalize" href="{{ url('sys/pedidos/novo') }}">{{ __('common.new') }} Pedido</a>
 </div>
-
 
 @if (session('status'))
 <div class="alert alert-{{ session('status') }}" role="alert">
 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<h5>{{ session('message') }}</h5>
+<strong>{{ session('message') }}</strong><br/>
     @if(session('data'))
-    Pedido de número <b>#{{ session('data.data.id')}}</b>, para o cliente <b>{{ session('data.cliente_nome') }}</b>. 
-    <br/>
+    Pedido de número <b>#{{ session('data.data.id')}}</b><br/>
+    cliente: <b>{{ session('data.cliente_nome') }}</b><br/>
     Valor total: <b>{{  'R$ '.number_format(session('data.data.valor_total'), 2, ',', '.') }}</b>
     @endif
 </div>
@@ -55,10 +54,11 @@
     <td>{{  'R$ '.number_format($p->valor_unitario, 2, ',', '.') }}</td>
     <td>{{  'R$ '.number_format($p->valor_total, 2, ',', '.') }}</td>
     <td>
-    <a href="{{ url('sys/pedidos/editar', $p->id) }}" class="btn btn-sm btn-primary"> editar </a>
-    <form method="POST" action="{{ url('sys/pedidos/excluir', $p->id) }}">
+    <a href="{{ url('sys/pedidos/editar', $p->id) }}" class="btn btn-sm btn-primary float-left"> {{ __('common.edit') }} </a>
+
+    <form method="POST" class="float-left ml-2" action="{{ url('sys/pedidos/excluir', $p->id) }}">
         @csrf @method('delete')
-        <button type="submit" class="btn btn-sm btn-danger">Deletar</button>
+        <button type="submit" class="btn btn-sm btn-danger">{{ __('common.delete') }}</button>
     </form>
     </td>
     </tr>

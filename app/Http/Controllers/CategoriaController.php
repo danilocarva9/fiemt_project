@@ -41,7 +41,7 @@ class CategoriaController extends Controller
         $categoria->nome = $request->nome;
         $categoria->save();
 
-        return redirect('sys/categorias')->with('status', 'Categoria cadastra com sucesso.');
+        return redirect('sys/categorias')->with('status', __('messages.success_inserted'));
     }
 
     /**
@@ -69,7 +69,7 @@ class CategoriaController extends Controller
         $categoria->nome = $request->nome;
         $categoria->update();
 
-        return redirect('sys/categorias')->with('status', 'Categoria salva com sucesso.');
+        return redirect('sys/categorias')->with('status', __('messages.success_updated'));
     }
 
     /**
@@ -82,6 +82,6 @@ class CategoriaController extends Controller
     {
         $categoria = Categoria::FindOrFail($id);
         $categoria->delete();
-        return redirect('sys/categorias')->with('status', 'Categoria excluída com sucesso.');
+        return redirect('sys/categorias')->with('status', __('messages.success_deleted'));
     }
 }

@@ -57,11 +57,11 @@ DB_PASSWORD=                  -- senha do banco de dados.
 ```bash
 php artisan migrate
 ```
-> (Se o banco de dados estiver rodando e com as configurações certas no .env, o migration deve criar as tabelas [clientes, pedidos, produtos e migrations] automaticamente).
+> (Se o banco de dados estiver rodando e com as configurações certas no .env, o migration deve criar as tabelas [clientes, pedidos, produtos, categorias, users, password_resets e migrations] automaticamente).
 
-9. Agora é preciso rodar as seeds, que são responsáveis por popular nosso banco de dados. (As seeds do projeto irão apenas criar 5 categorias pré estabelecidas), rode o comando abaixo:
+9. Agora é preciso rodar as seeds, que são responsáveis por popular nosso banco de dados. (As seeds irão criar 5 categorias de produtos pré estabelecidas, e um usuário DEFAULT), rode o comando abaixo:
 ```bash
-php artisan db:seed --class=CategoriaSeeder
+php artisan db:seed
 ```
 > (Caso não consiga rodar a seeder, as categorias vão ser criadas pelos script de criação do banco na pasta banco-de-dados).
 
@@ -77,7 +77,12 @@ php -S 127.0.0.1:8000 -t public/
 ```
 >(A aplicação estará acessível pelo browser em: http://127.0.0.1:8000)
 
+11. Há um usuário DEFAULT criado pelas seeds, informações abaixo:
 
+```bash
+usuário: fiemt@fiemt.com.br
+senha: 12345678
+```
 
 # =) Pronto xD
 A aplicação deverá rodar e é possível mexer nas funcionalidades criadas.
