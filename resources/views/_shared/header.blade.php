@@ -5,7 +5,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <span class="text-white">Olá {{{ Auth::user()->name }}}</span>
+  <span class="text-white">Olá, seja bem-vindo {{{ Auth::user()->name }}}</span>
   <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
 
   <ul class="navbar-nav px-3">
