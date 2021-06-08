@@ -4,7 +4,7 @@
 
 * A aplicação foi feita em PHP utilizando o Framework Laravel na sua versão 8.44.0
 * Se conecta ao banco de dados MySQL na sua versão 5.7.32
-* A criação das tabelas é feita pela migration do Laravel. (Caso há problemas na migration, há um arquivo SQL para criação das tabelas do banco na pasta (_SCRIPTS), na raiz do projeto.
+* A criação das tabelas é feita pela migration do Laravel. (Caso há problemas na migration, há um arquivo SQL para criação das tabelas do banco na pasta (banco-de-dados), na raiz do projeto.
 * É necessário PHP versão 7 > acima.
 * É necessário ter instalado o [composer](https://getcomposer.org) (gerenciador de dependências do PHP).
 
