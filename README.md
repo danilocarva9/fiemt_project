@@ -31,7 +31,7 @@ composer install
  > (O comando acima irá instalar todas as dependências do projeto, caso haja algum erro, deverá verificar se o PHP está com as extensões listadas acima, instaladas e ativas.)
 
 
-5. Após editar o arquivo **.env**, rodar o comando abaixo para gerar a key para aplicação (irá gerar uma chave base64 no arquivo .env (APP_KEY):
+5. Após editar o nome do arquivo para **.env**, rodar o comando abaixo para gerar a key para aplicação (irá gerar uma chave base64 no arquivo .env (APP_KEY):
 ```bash
 php artisan key:generate
 ```
@@ -42,12 +42,12 @@ php artisan key:generate
 7. Configure o arquivo **.env**, nele é preciso definir as variáveis abaixo com as configurações do banco de dados MYSQL que irá acessar:
 
 ```bash
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1             -- aqui vai o IP, se for rodar local, deixar o atual.
-DB_PORT=3306                  -- porta do banco de dados.
-DB_DATABASE=meus_pedidos           -- nome do banco de dados criado.
-DB_USERNAME=root              -- usuário do banco de dados.
-DB_PASSWORD=                  -- senha do banco de dados.
+DB_CONNECTION=mysql           --tipo da conexão -mysql
+DB_HOST=127.0.0.1             --aqui vai o IP, se for rodar local, deixar o atual.
+DB_PORT=3306                  --porta do banco de dados.
+DB_DATABASE=meus_pedidos           --nome do banco de dados criado.
+DB_USERNAME=root              --usuário do banco de dados.
+DB_PASSWORD=                  --senha do banco de dados.
 ```
 > Definir as variáveis de acordo com as informações de acesso do seu banco local.
 
@@ -57,13 +57,13 @@ DB_PASSWORD=                  -- senha do banco de dados.
 ```bash
 php artisan migrate
 ```
-> (Se o banco de dados estiver rodando e com as configurações certas no .env, o migration deve criar as tabelas [clientes, pedidos, produtos, categorias, users, password_resets e migrations] automaticamente).
+> (Se o banco de dados estiver rodando, com a database criada e com as configurações certas no .env, o migration deve criar as tabelas [clientes, pedidos, produtos, categorias, users, password_resets e migrations] automaticamente).
 
 9. Agora é preciso rodar as seeds, que são responsáveis por popular nosso banco de dados. (As seeds irão criar 5 categorias de produtos pré estabelecidas, e um usuário DEFAULT), rode o comando abaixo:
 ```bash
 php artisan db:seed
 ```
-> (Caso não consiga rodar a seeder, as categorias vão ser criadas pelos script de criação do banco na pasta banco-de-dados).
+> (Caso não consiga rodar as seeds, as categorias poderão ser criadas pelos script de criação/inserção do banco na pasta banco-de-dados).
 
 
 10. Para rodar a aplicação, há duas formas. Estando no Terminal/CMD dentro da pasta, na raiz, rode um dos códigos:
@@ -75,14 +75,14 @@ ou
 
 php -S 127.0.0.1:8000 -t public/
 ```
->(A aplicação estará acessível pelo browser em: http://127.0.0.1:8000)
+>(Ambos deixarão a aplicação acessível pelo browser em: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-11. Há um usuário DEFAULT criado pelas seeds, informações abaixo:
+11. Há um usuário DEFAULT criado pelas seeds, você pode acessar o painel com as informações abaixo:
 
 ```bash
 usuário: fiemt@fiemt.com.br
 senha: 12345678
 ```
 
-# =) Pronto xD
+#  Pronto =)
 A aplicação deverá rodar e é possível mexer nas funcionalidades criadas.
