@@ -25,7 +25,7 @@
 <strong>{{ session('message') }}</strong><br/>
     @if(session('data'))
     Pedido de número <b>#{{ session('data.data.id')}}</b><br/>
-    cliente: <b>{{ session('data.cliente_nome') }}</b><br/>
+    Cliente: <b>{{ session('data.cliente_nome') }}</b><br/>
     Valor total: <b>{{  'R$ '.number_format(session('data.data.valor_total'), 2, ',', '.') }}</b>
     @endif
 </div>
