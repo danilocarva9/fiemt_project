@@ -8,7 +8,6 @@
 * É necessário PHP versão 7 > acima.
 * É necessário ter instalado o [composer](https://getcomposer.org) (gerenciador de dependências do PHP).
 
-
 ## Instalação
 
 1. Fazer o clone do projeto 
